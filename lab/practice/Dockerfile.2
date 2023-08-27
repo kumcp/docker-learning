@@ -1,0 +1,8 @@
+FROM alpine as builder
+
+COPY ./index.html /app/
+RUN echo "test code" > /app/test.html
+RUN cat /app/index.html >> /app/test.html
+
+FROM nginx as runner
+COPY --from=builder /app/test.html /usr/share/nginx/html/test.html 

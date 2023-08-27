@@ -1,0 +1,4 @@
+FROM nginx
+
+COPY ./index.html /usr/share/nginx/html
+RUN echo "test code" > /usr/share/nginx/html/test.html

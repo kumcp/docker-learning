@@ -1,0 +1,8 @@
+FROM alpine:3.16.2
+
+RUN addgroup --g 1000 groupcontainer
+RUN adduser -u 1000 -G groupcontainer -h /home/containeruser -D containeruser
+
+USER containeruser
+RUN echo test > test2.txt
+COPY test.txt /home/containeruser/test.txt

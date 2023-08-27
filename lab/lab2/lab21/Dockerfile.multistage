@@ -1,0 +1,9 @@
+FROM alpine as builder
+WORKDIR /
+COPY ./file2.sh /
+RUN ls
+
+
+FROM nginx as runner
+COPY ./file1.sh /
+COPY --from=builder /file2.sh /
