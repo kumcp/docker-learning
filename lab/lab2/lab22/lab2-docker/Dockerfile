@@ -6,6 +6,10 @@ RUN npm install
 RUN npm run build
 
 
+FROM builder as dev-runner
+CMD npm run serve
+
+
 FROM nginx as runner
 COPY --from=builder /app/dist /usr/share/nginx/html
 
